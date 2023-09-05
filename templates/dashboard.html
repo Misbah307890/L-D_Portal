@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- You should link your CSS file here, replace "styles.css" with your actual CSS file -->
+    <style>
+        /* Add inline styles here if needed */
+        .course-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            float: left;
+        }
+        .course-card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .request-button {
+            clear: both;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Training Dashboard</h1>
+    </header>
 
+    <!-- Course Cards -->
+    <div class="course-card">
+        <img src="course1.jpg" alt="Course 1">
+        <h3>Course 1</h3>
+        <p>Course 1 Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac justo eu quam congue venenatis.</p>
+        <a href="#">Learn More</a>
+    </div>
+
+    <div class="course-card">
+        <img src="course2.jpg" alt="Course 2">
+        <h3>Course 2</h3>
+        <p>Course 2 Description. Fusce dignissim libero id justo egestas, nec vestibulum quam volutpat.</p>
+        <a href="#">Learn More</a>
+    </div>
+
+    <!-- Repeat for other courses -->
+
+    <!-- Request for Training Button -->
+    <div class="request-button">
+        <a href="{{ url_for('request_training') }}">Request for Training</a>
+    </div>
+
+    <!-- Add your CSS styles here -->
+<div>
+
+    <a href="/requested_courses">Requested Courses</a>
+</div>
+    <footer>
+        <!-- Add footer content here if needed -->
+    </footer>
+</body>
+</html>

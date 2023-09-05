@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request for Training</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- You should link your CSS file here, replace "styles.css" with your actual CSS file -->
+    <style>
+        /* Add inline styles here if needed */
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Request for Training</h1>
+    <form method="POST" action="{{ url_for('request_training') }}">
+        <!-- Course Type Dropdown -->
+        <label for="course_type">Course Type:</label>
+        <select name="course_type" id="course_type">
+            <option value="Foundation">Foundation</option>
+            <option value="Induction">Induction</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+
+        <!-- Course Name Dropdown (populated dynamically with JavaScript) -->
+        <label for="course_name">Course Name:</label>
+        <select name="course_name" id="course_name">
+            <!-- Options will be dynamically added here -->
+        </select>
+
+        <!-- Course Duration Dropdown -->
+        <label for="course_duration">Course Duration:</label>
+        <select name="course_duration" id="course_duration">
+            <option value="1 week">1 week</option>
+            <option value="2 weeks">2 weeks</option>
+            <option value="3 weeks">3 weeks</option>
+        </select>
+
+        <!-- Online/Offline Radio Buttons -->
+        <label>Online/Offline:</label>
+        <input type="radio" name="online_offline" value="Online"> Online
+        <input type="radio" name="online_offline" value="Offline"> Offline
+
+        <!-- Team Selection Dropdown -->
+        <label for="team_selection">Team Selection:</label>
+        <select name="team_selection" id="team_selection">
+            <option value="Team A">Team A</option>
+            <option value="Team B">Team B</option>
+            <option value="Team C">Team C</option>
+            <option value="Team D">Team D</option>
+        </select>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- JavaScript for dynamic Course Name dropdown -->
+    <script>
+        // JavaScript code to populate the Course Name dropdown based on Course Type
+        const courseTypeSelect = document.getElementById('course_type');
+        const courseNameSelect = document.getElementById('course_name');
+
+        // Define course names for each course type
+        const courseNames = {
+            'Foundation': ['Introduction to Programming', 'Introduction to DBMS', 'Introduction to Web Development'],
+            'Induction': ['Python', 'SQL', 'HTML & CSS'],
+            'Advanced': ['.NET', 'Ruby on Rails', 'Azure DevOps']
+        };
+
+        // Update course name options based on course type selection
+        courseTypeSelect.addEventListener('change', () => {
+            const selectedCourseType = courseTypeSelect.value;
+            courseNameSelect.innerHTML = ''; // Clear previous options
+
+            // Populate course name options
+            courseNames[selectedCourseType].forEach(courseName => {
+                const option = document.createElement('option');
+                option.value = courseName;
+                option.textContent = courseName;
+                courseNameSelect.appendChild(option);
+            });
+        });
+
+        // Initial population based on the default selected course type
+        const initialCourseType = courseTypeSelect.value;
+        courseNames[initialCourseType].forEach(courseName => {
+            const option = document.createElement('option');
+            option.value = courseName;
+            option.textContent = courseName;
+            courseNameSelect.appendChild(option);
+        });
+    </script>
+
+    <!-- Add your CSS styles here -->
+</body>
+</html>
